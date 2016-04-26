@@ -19480,7 +19480,9 @@ var TaskItem = React.createClass({
         React.createElement(
           'button',
           null,
-          ' Add '
+          ' Add ',
+          this.props.title,
+          ' '
         )
       ),
       React.createElement(List, { items: this.state.items })
@@ -19528,7 +19530,7 @@ var TaskManager = React.createClass({
         React.createElement(
           'button',
           null,
-          ' Add '
+          ' Add a New Task '
         )
       ),
       React.createElement(Task, { tasks: this.state.tasks })

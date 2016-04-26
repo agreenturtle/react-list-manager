@@ -23,7 +23,7 @@ var TaskManager = React.createClass({
         <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.newTaskTitle} />
-          <button> Add </button>
+          <button> Add a New Task </button>
         </form>
 
         <Task tasks={this.state.tasks} />
