@@ -19376,7 +19376,9 @@ var List = React.createClass({
     return React.createElement(
       'ul',
       null,
-      this.props.items.map(createItem)
+      ' ',
+      this.props.items.map(createItem),
+      ' '
     );
   }
 });
@@ -19387,14 +19389,27 @@ module.exports = List;
 var React = require('react');
 
 var ListItem = React.createClass({
-  displayName: 'ListItem',
+  displayName: "ListItem",
 
+  getInitialState: function () {
+    return { checked: false };
+  },
+  onChange: function (e) {
+    if (this.state.checked) {
+      e.target.parentNode.querySelector("label").className = "";
+      this.setState({ checked: false });
+    } else {
+      e.target.parentNode.querySelector("label").className = "checked";
+      this.setState({ checked: true });
+    }
+  },
   render: function () {
     return React.createElement(
-      'li',
+      "li",
       null,
+      React.createElement("input", { type: "checkbox", onChange: this.onChange }),
       React.createElement(
-        'h4',
+        "label",
         null,
         this.props.text
       )
@@ -19406,10 +19421,34 @@ module.exports = ListItem;
 
 },{"react":164}],168:[function(require,module,exports){
 var React = require('react');
+var TaskItem = require('./TaskItem.jsx');
+
+var Task = React.createClass({
+  displayName: 'Task',
+
+  render: function () {
+    var createTask = function (title, index) {
+      return React.createElement(TaskItem, { key: index + title, title: title });
+    };
+
+    return React.createElement(
+      'div',
+      null,
+      ' ',
+      this.props.tasks.map(createTask),
+      ' '
+    );
+  }
+});
+
+module.exports = Task;
+
+},{"./TaskItem.jsx":169,"react":164}],169:[function(require,module,exports){
+var React = require('react');
 var List = require('./List.jsx');
 
-var ListManager = React.createClass({
-  displayName: 'ListManager',
+var TaskItem = React.createClass({
+  displayName: 'TaskItem',
 
   getInitialState: function () {
     return { items: [], newItemText: '' };
@@ -19419,17 +19458,16 @@ var ListManager = React.createClass({
   },
   handleSubmit: function (e) {
     e.preventDefault();
-
-    var currentItems = this.state.items;
-
-    currentItems.push(this.state.newItemText);
-
-    this.setState({ items: currentItems, newItemText: '' });
+    if (this.state.newItemText.trim()) {
+      var currentItems = this.state.items;
+      currentItems.push(this.state.newItemText);
+      this.setState({ items: currentItems, newItemText: '' });
+    }
   },
   render: function () {
     return React.createElement(
       'div',
-      null,
+      { className: 'box' },
       React.createElement(
         'h3',
         null,
@@ -19450,13 +19488,61 @@ var ListManager = React.createClass({
   }
 });
 
-module.exports = ListManager;
+module.exports = TaskItem;
 
-},{"./List.jsx":166,"react":164}],169:[function(require,module,exports){
+},{"./List.jsx":166,"react":164}],170:[function(require,module,exports){
+var React = require('react');
+var Task = require('./Task.jsx');
+
+var TaskManager = React.createClass({
+  displayName: 'TaskManager',
+
+  getInitialState: function () {
+    return { tasks: [], newTaskTitle: '' };
+  },
+  onChange: function (e) {
+    this.setState({ newTaskTitle: e.target.value });
+  },
+  handleSubmit: function (e) {
+    e.preventDefault();
+    console.log("TaskManager-handleSubmit: (", this.state.newTaskTitle, ")");
+    if (this.state.newTaskTitle.trim()) {
+      var currentTask = this.state.tasks;
+      currentTask.push(this.state.newTaskTitle);
+      this.setState({ tasks: currentTask, newTaskTitle: '' });
+    }
+  },
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'main-box' },
+      React.createElement(
+        'h3',
+        null,
+        this.props.title
+      ),
+      React.createElement(
+        'form',
+        { onSubmit: this.handleSubmit },
+        React.createElement('input', { onChange: this.onChange, value: this.state.newTaskTitle }),
+        React.createElement(
+          'button',
+          null,
+          ' Add '
+        )
+      ),
+      React.createElement(Task, { tasks: this.state.tasks })
+    );
+  }
+});
+
+module.exports = TaskManager;
+
+},{"./Task.jsx":168,"react":164}],171:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ListManager = require('./components/ListManager.jsx');
+var TaskManager = require('./components/TaskManager.jsx');
 
-ReactDOM.render(React.createElement(ListManager, { title: 'Ingredients' }), document.getElementById('app'));
+ReactDOM.render(React.createElement(TaskManager, { title: 'My Tasks' }), document.getElementById('app'));
 
-},{"./components/ListManager.jsx":168,"react":164,"react-dom":1}]},{},[169]);
+},{"./components/TaskManager.jsx":170,"react":164,"react-dom":1}]},{},[171]);

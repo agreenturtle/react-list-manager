@@ -1,0 +1,37 @@
+body {
+  background-color: #273036;
+}
+ul {
+  list-style-type:none;
+  padding-left:0;
+}
+.box {
+  background-color: #bcd5eb;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  display:inline-block;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  top: 0px;
+  width: 200px;
+  word-wrap: break-word;
+}
+.checked {
+  text-decoration: line-through;
+}
+.main-box {
+  background-color: #888888;
+  border: 1px;
+  border-color: white;
+  border-style: solid;
+  margin: 30px;
+  padding: 15px;
+}
+.task {
+  background-color: blue;
+}
+* {
+  box-sizing: border-box;
+}

@@ -1,5 +1,5 @@
  var React = require('react');
  var ReactDOM = require('react-dom');
- var ListManager = require('./components/ListManager.jsx');
+ var TaskManager = require('./components/TaskManager.jsx');
 
- ReactDOM.render(<ListManager title="Ingredients" />, document.getElementById('app'));
+ ReactDOM.render(<TaskManager title="My Tasks" />, document.getElementById('app'));
