@@ -19387,12 +19387,16 @@ module.exports = List;
 
 },{"./ListItem.jsx":167,"react":164}],167:[function(require,module,exports){
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var ListItem = React.createClass({
-  displayName: "ListItem",
+  displayName: 'ListItem',
 
   getInitialState: function () {
-    return { checked: false };
+    return { checked: false, showItem: true };
+  },
+  removeItem: function (e) {
+    this.setState({ showItem: false });
   },
   onChange: function (e) {
     if (this.state.checked) {
@@ -19404,22 +19408,31 @@ var ListItem = React.createClass({
     }
   },
   render: function () {
-    return React.createElement(
-      "li",
-      null,
-      React.createElement("input", { type: "checkbox", onChange: this.onChange }),
-      React.createElement(
-        "label",
-        null,
-        this.props.text
-      )
-    );
+    if (this.state.showItem) {
+      return React.createElement(
+        'li',
+        { className: 'list-item' },
+        React.createElement('input', { type: 'checkbox', onChange: this.onChange }),
+        React.createElement(
+          'label',
+          null,
+          this.props.text
+        ),
+        React.createElement(
+          'span',
+          { className: 'delete-list-item', onClick: this.removeItem },
+          ' x '
+        )
+      );
+    } else {
+      return React.createElement('li', null);
+    }
   }
 });
 
 module.exports = ListItem;
 
-},{"react":164}],168:[function(require,module,exports){
+},{"react":164,"react-dom":1}],168:[function(require,module,exports){
 var React = require('react');
 var TaskItem = require('./TaskItem.jsx');
 
@@ -19451,7 +19464,7 @@ var TaskItem = React.createClass({
   displayName: 'TaskItem',
 
   getInitialState: function () {
-    return { items: [], newItemText: '' };
+    return { items: [], newItemText: '', showTask: true };
   },
   onChange: function (e) {
     this.setState({ newItemText: e.target.value });
@@ -19461,32 +19474,49 @@ var TaskItem = React.createClass({
     if (this.state.newItemText.trim()) {
       var currentItems = this.state.items;
       currentItems.push(this.state.newItemText);
-      this.setState({ items: currentItems, newItemText: '' });
+      this.setState({ items: currentItems, newItemText: '', showTask: true });
     }
   },
+  removeTask: function () {
+    this.setState({ showTask: false });
+  },
   render: function () {
-    return React.createElement(
-      'div',
-      { className: 'box' },
-      React.createElement(
-        'h3',
-        null,
-        this.props.title
-      ),
-      React.createElement(
-        'form',
-        { onSubmit: this.handleSubmit },
-        React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+    if (this.state.showTask) {
+      return React.createElement(
+        'div',
+        { className: 'box' },
         React.createElement(
-          'button',
+          'span',
           null,
-          ' Add ',
-          this.props.title,
-          ' '
-        )
-      ),
-      React.createElement(List, { items: this.state.items })
-    );
+          React.createElement(
+            'h3',
+            { className: 'task-title' },
+            this.props.title,
+            ' ',
+            React.createElement(
+              'span',
+              { className: 'delete-task-item', onClick: this.removeTask },
+              ' x '
+            )
+          )
+        ),
+        React.createElement(
+          'form',
+          { onSubmit: this.handleSubmit },
+          React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+          React.createElement(
+            'button',
+            null,
+            ' Add ',
+            this.props.title,
+            ' '
+          )
+        ),
+        React.createElement(List, { items: this.state.items })
+      );
+    } else {
+      return React.createElement('span', null);
+    }
   }
 });
 

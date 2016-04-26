@@ -24,6 +24,19 @@ ul {
   text-decoration: line-through;
   color: #b22222;
 }
+.delete-list-item {
+  color: white;
+  float: right;
+  display: none;
+}
+.delete-task-item {
+  color: #dc143c;
+  float: right;
+  display: none;
+}
+.list-item:hover .delete-list-item {
+  display: block;
+}
 .main-box {
   background-color: #888888;
   border: 1px;
@@ -32,8 +45,14 @@ ul {
   margin: 30px;
   padding: 15px;
 }
+.box:hover .delete-task-item {
+  display: block;
+}
 .task {
   background-color: blue;
+}
+.task-title {
+  color: white;
 }
 * {
   box-sizing: border-box;

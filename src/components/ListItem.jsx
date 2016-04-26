@@ -1,8 +1,12 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var ListItem = React.createClass({
   getInitialState: function(){
-    return ({checked:false})
+    return ({checked:false, showItem:true})
+  },
+  removeItem: function(e){
+    this.setState({showItem:false});
   },
   onChange: function(e){
     if(this.state.checked){
@@ -14,13 +18,19 @@ var ListItem = React.createClass({
       this.setState({checked:true});
     }
   },
-  render: function(){ 
-    return (
-      <li>
-        <input type="checkbox" onChange={this.onChange} />
-        <label>{this.props.text}</label>
-      </li>
-    );
+  render: function(){
+    if(this.state.showItem){
+      return (
+        <li className="list-item">
+          <input type="checkbox" onChange={this.onChange} />
+          <label>{this.props.text}</label>
+          <span className="delete-list-item" onClick={this.removeItem}> x </span>
+        </li>
+      );
+    }
+    else{
+      return (<li></li>);
+    }
   }
 });
 
