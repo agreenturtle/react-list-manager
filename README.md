@@ -7,3 +7,6 @@ To Use:
 3. To cross off an item, select the check box next to the list item.
 4. To remove a list item, click the "x" by the list item
 5. To remove a Task, click the "x" at the top of the box.
+
+Link to the App:
+http://agreenturtle.github.io/react-list-manager/
