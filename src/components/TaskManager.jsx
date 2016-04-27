@@ -1,5 +1,7 @@
 var React = require('react');
 var Task = require('./Task.jsx');
+var InputBox = require('./InputBox.jsx');
+var Button = require('./Button.jsx');
 
 var TaskManager = React.createClass({
   getInitialState:function(){
@@ -21,8 +23,8 @@ var TaskManager = React.createClass({
       <div className="main-box">
         <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
-          <input className="input-add-task" onChange={this.onChange} value={this.state.newTaskTitle} />
-          <button className="btn-add-task"> Add New Task </button>
+          <InputBox className="input-add-task" onChange={this.onChange} value={this.state.newTaskTitle} placeholder="Enter New Task" />
+          <Button className="btn-add-task" text="Add New Task" />
         </form>
 
         <Task tasks={this.state.tasks} />

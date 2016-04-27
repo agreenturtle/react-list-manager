@@ -19363,6 +19363,38 @@ process.umask = function() { return 0; };
 
 },{}],166:[function(require,module,exports){
 var React = require('react');
+
+var Button = React.createClass({
+  displayName: 'Button',
+
+  render: function () {
+    return React.createElement(
+      'button',
+      { className: this.props.className },
+      ' ',
+      this.props.text,
+      ' '
+    );
+  }
+});
+
+module.exports = Button;
+
+},{"react":164}],167:[function(require,module,exports){
+var React = require('react');
+
+var InputBox = React.createClass({
+  displayName: 'InputBox',
+
+  render: function () {
+    return React.createElement('input', { className: this.props.className, onChange: this.props.onChange, value: this.props.value, placeholder: this.props.placeholder });
+  }
+});
+
+module.exports = InputBox;
+
+},{"react":164}],168:[function(require,module,exports){
+var React = require('react');
 var ListItem = require('./ListItem.jsx');
 
 var List = React.createClass({
@@ -19385,12 +19417,11 @@ var List = React.createClass({
 
 module.exports = List;
 
-},{"./ListItem.jsx":167,"react":164}],167:[function(require,module,exports){
+},{"./ListItem.jsx":169,"react":164}],169:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
 
 var ListItem = React.createClass({
-  displayName: 'ListItem',
+  displayName: "ListItem",
 
   getInitialState: function () {
     return { checked: false, showItem: true };
@@ -19410,29 +19441,29 @@ var ListItem = React.createClass({
   render: function () {
     if (this.state.showItem) {
       return React.createElement(
-        'li',
-        { className: 'list-item' },
-        React.createElement('input', { type: 'checkbox', onChange: this.onChange }),
+        "li",
+        { className: "list-item" },
+        React.createElement("input", { type: "checkbox", onChange: this.onChange }),
         React.createElement(
-          'label',
+          "label",
           null,
           this.props.text
         ),
         React.createElement(
-          'span',
-          { className: 'delete-list-item', onClick: this.removeItem },
-          ' x '
+          "span",
+          { className: "delete-list-item", onClick: this.removeItem },
+          " x "
         )
       );
     } else {
-      return React.createElement('li', null);
+      return React.createElement("li", null);
     }
   }
 });
 
 module.exports = ListItem;
 
-},{"react":164,"react-dom":1}],168:[function(require,module,exports){
+},{"react":164}],170:[function(require,module,exports){
 var React = require('react');
 
 var Navbar = React.createClass({
@@ -19453,7 +19484,7 @@ var Navbar = React.createClass({
 
 module.exports = Navbar;
 
-},{"react":164}],169:[function(require,module,exports){
+},{"react":164}],171:[function(require,module,exports){
 var React = require('react');
 var TaskItem = require('./TaskItem.jsx');
 
@@ -19477,9 +19508,11 @@ var Task = React.createClass({
 
 module.exports = Task;
 
-},{"./TaskItem.jsx":170,"react":164}],170:[function(require,module,exports){
+},{"./TaskItem.jsx":172,"react":164}],172:[function(require,module,exports){
 var React = require('react');
 var List = require('./List.jsx');
+var InputBox = require('./InputBox.jsx');
+var Button = require('./Button.jsx');
 
 var TaskItem = React.createClass({
   displayName: 'TaskItem',
@@ -19524,12 +19557,8 @@ var TaskItem = React.createClass({
         React.createElement(
           'form',
           { onSubmit: this.handleSubmit },
-          React.createElement('input', { className: 'input-add-listitem', onChange: this.onChange, value: this.state.newItemText }),
-          React.createElement(
-            'button',
-            { className: 'btn-add-listitem' },
-            ' Add '
-          )
+          React.createElement(InputBox, { className: 'input-add-listitem', onChange: this.onChange, value: this.state.newItemText, placeholder: '' }),
+          React.createElement(Button, { className: 'btn-add-listitem', text: 'Add' })
         ),
         React.createElement(List, { items: this.state.items })
       );
@@ -19541,9 +19570,11 @@ var TaskItem = React.createClass({
 
 module.exports = TaskItem;
 
-},{"./List.jsx":166,"react":164}],171:[function(require,module,exports){
+},{"./Button.jsx":166,"./InputBox.jsx":167,"./List.jsx":168,"react":164}],173:[function(require,module,exports){
 var React = require('react');
 var Task = require('./Task.jsx');
+var InputBox = require('./InputBox.jsx');
+var Button = require('./Button.jsx');
 
 var TaskManager = React.createClass({
   displayName: 'TaskManager',
@@ -19574,12 +19605,8 @@ var TaskManager = React.createClass({
       React.createElement(
         'form',
         { onSubmit: this.handleSubmit },
-        React.createElement('input', { className: 'input-add-task', onChange: this.onChange, value: this.state.newTaskTitle }),
-        React.createElement(
-          'button',
-          { className: 'btn-add-task' },
-          ' Add New Task '
-        )
+        React.createElement(InputBox, { className: 'input-add-task', onChange: this.onChange, value: this.state.newTaskTitle, placeholder: 'Enter New Task' }),
+        React.createElement(Button, { className: 'btn-add-task', text: 'Add New Task' })
       ),
       React.createElement(Task, { tasks: this.state.tasks })
     );
@@ -19588,13 +19615,13 @@ var TaskManager = React.createClass({
 
 module.exports = TaskManager;
 
-},{"./Task.jsx":169,"react":164}],172:[function(require,module,exports){
+},{"./Button.jsx":166,"./InputBox.jsx":167,"./Task.jsx":171,"react":164}],174:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var TaskManager = require('./components/TaskManager.jsx');
 var Navbar = require('./components/Navbar.jsx');
 
 ReactDOM.render(React.createElement(Navbar, null), document.getElementById('header'));
-ReactDOM.render(React.createElement(TaskManager, { title: 'My Tasks' }), document.getElementById('app'));
+ReactDOM.render(React.createElement(TaskManager, { title: '' }), document.getElementById('app'));
 
-},{"./components/Navbar.jsx":168,"./components/TaskManager.jsx":171,"react":164,"react-dom":1}]},{},[172]);
+},{"./components/Navbar.jsx":170,"./components/TaskManager.jsx":173,"react":164,"react-dom":1}]},{},[174]);

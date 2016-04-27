@@ -1,5 +1,7 @@
 var React = require('react');
 var List = require('./List.jsx');
+var InputBox = require('./InputBox.jsx');
+var Button = require('./Button.jsx');
 
 var TaskItem = React.createClass({
   getInitialState: function(){
@@ -28,8 +30,8 @@ var TaskItem = React.createClass({
 
             </span>
             <form onSubmit={this.handleSubmit}>
-              <input className="input-add-listitem" onChange={this.onChange} value={this.state.newItemText} />
-              <button className="btn-add-listitem"> Add </button>
+              <InputBox className="input-add-listitem" onChange={this.onChange} value={this.state.newItemText} placeholder="" />
+              <Button className="btn-add-listitem" text="Add" />
             </form>
 
             <List items={this.state.items} />

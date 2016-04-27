@@ -4,4 +4,4 @@
  var Navbar = require('./components/Navbar.jsx')
 
 ReactDOM.render(<Navbar />, document.getElementById('header'));
-ReactDOM.render(<TaskManager title="My Tasks" />, document.getElementById('app'));
+ReactDOM.render(<TaskManager title="" />, document.getElementById('app'));
