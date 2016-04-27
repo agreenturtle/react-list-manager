@@ -19407,7 +19407,7 @@ var List = React.createClass({
 
     return React.createElement(
       'ul',
-      null,
+      { className: 'list' },
       ' ',
       this.props.items.map(createItem),
       ' '
@@ -19605,7 +19605,7 @@ var TaskManager = React.createClass({
       React.createElement(
         'form',
         { onSubmit: this.handleSubmit },
-        React.createElement(InputBox, { className: 'input-add-task', onChange: this.onChange, value: this.state.newTaskTitle, placeholder: 'Enter New Task' }),
+        React.createElement(InputBox, { className: 'input-add-task', onChange: this.onChange, value: this.state.newTaskTitle, placeholder: '' }),
         React.createElement(Button, { className: 'btn-add-task', text: 'Add New Task' })
       ),
       React.createElement(Task, { tasks: this.state.tasks })

@@ -23,7 +23,7 @@ var TaskManager = React.createClass({
       <div className="main-box">
         <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
-          <InputBox className="input-add-task" onChange={this.onChange} value={this.state.newTaskTitle} placeholder="Enter New Task" />
+          <InputBox className="input-add-task" onChange={this.onChange} value={this.state.newTaskTitle} placeholder="" />
           <Button className="btn-add-task" text="Add New Task" />
         </form>
 

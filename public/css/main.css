@@ -11,10 +11,6 @@ header {
 	width: 100%;
 	z-index: 10;
 }
-ul {
-  list-style-type:none;
-  padding-left:0;
-}
 
 .box {
   background-color: rgba(73, 94, 111, 0.4);
@@ -25,30 +21,15 @@ ul {
   display:inline-block;
   margin: 10px;
   padding: 15px;
+  padding-top:5px;
   position: relative;
   top: 0px;
   width: 200px;
   word-wrap: break-word;
   vertical-align:top;
 }
-.btn-add-task {
-  background-color: rgba(73, 94, 111, 0.4);
-  border: 0px;
-  border-color: white;
-  border-left-style: groove;
-  border-left-width: thin;
-  color: white;
-  cursor: pointer;
-  font-size: 10px;
-  font-weight: 300;
-  height: 48px;
-  letter-spacing: 1px;
-  padding: 2px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  top: -2px;
-  width: 110px;
+.box:hover .delete-task-item {
+  display: block;
 }
 .btn-add-listitem {
   background-color: rgba(73, 94, 111, 0.4);
@@ -69,6 +50,25 @@ ul {
   top: -1px;
   width: 40px;
 }
+.btn-add-task {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 0px;
+  border-color: white;
+  border-left-style: groove;
+  border-left-width: thin;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 300;
+  height: 48px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -2px;
+  width: 110px;
+}
 .checked {
   text-decoration: line-through;
   color: #b22222;
@@ -77,11 +77,13 @@ ul {
   color: #888888;
   float: right;
   display: none;
+  cursor: pointer;
 }
 .delete-task-item {
   color: #888888;
   float: right;
   display: none;
+  cursor: pointer;
 }
 .header-title {
   background-color: transparent;
@@ -113,7 +115,7 @@ ul {
   background-color: rgba(73, 94, 111, 0.4);
   border: none;
   color: white;
-  line-height: 18px;
+  line-height: 24px;
   font-size: 18px;
   font-weight: 300;
   height: 48px;
@@ -121,6 +123,10 @@ ul {
   position: relative;
   text-align: center;
   width: calc(100% - 110px);
+}
+.list {
+  list-style-type:none;
+  padding-left:0;
 }
 .list-item:hover .delete-list-item {
   display: block;
@@ -131,9 +137,6 @@ ul {
   margin: 30px;
   margin-top: 58px;
   padding: 15px;
-}
-.box:hover .delete-task-item {
-  display: block;
 }
 .task {
   background-color: blue;
