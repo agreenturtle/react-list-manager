@@ -10,7 +10,6 @@ var TaskManager = React.createClass({
   },
   handleSubmit: function(e){
     e.preventDefault();
-    console.log("TaskManager-handleSubmit: (", this.state.newTaskTitle, ")");
     if(this.state.newTaskTitle.trim()){
       var currentTask = this.state.tasks;
       currentTask.push(this.state.newTaskTitle);
@@ -22,8 +21,8 @@ var TaskManager = React.createClass({
       <div className="main-box">
         <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.newTaskTitle} />
-          <button> Add a New Task </button>
+          <input className="input-add-task" onChange={this.onChange} value={this.state.newTaskTitle} />
+          <button className="btn-add-task"> Add New Task </button>
         </form>
 
         <Task tasks={this.state.tasks} />

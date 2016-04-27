@@ -1,16 +1,27 @@
 body {
-  background-color: #273036;
+  background-color: black;
+}
+header {
+  position: fixed;
+	background-color: #31343F;
+	height: 57px;
+	padding: 0 30px;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 10;
 }
 ul {
   list-style-type:none;
   padding-left:0;
 }
+
 .box {
-  background-color: #191970;
+  background-color: rgba(73, 94, 111, 0.4);
   border: 1px;
   border-color: black;
   border-style: solid;
-  color: #ffd700;
+  color: #888888;
   display:inline-block;
   margin: 10px;
   padding: 15px;
@@ -20,29 +31,105 @@ ul {
   word-wrap: break-word;
   vertical-align:top;
 }
+.btn-add-task {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 0px;
+  border-color: white;
+  border-left-style: groove;
+  border-left-width: thin;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 300;
+  height: 48px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -2px;
+  width: 110px;
+}
+.btn-add-listitem {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 0px;
+  border-color: white;
+  border-left-style: groove;
+  border-left-width: thin;
+  color: white;
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: 300;
+  height: 24px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -1px;
+  width: 40px;
+}
 .checked {
   text-decoration: line-through;
   color: #b22222;
 }
 .delete-list-item {
-  color: white;
+  color: #888888;
   float: right;
   display: none;
 }
 .delete-task-item {
-  color: #dc143c;
+  color: #888888;
   float: right;
   display: none;
+}
+.header-title {
+  background-color: transparent;
+  color: white;
+  cursor: default;
+  display: block;
+  font-size: 18px;
+  font-weight: 300;
+  height: 17px;
+  margin-top: 20px;
+  position: absolute;
+  text-decoration: none;
+  width: 131px;
+}
+.input-add-listitem {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: none;
+  color: white;
+  line-height: 18px;
+  font-size: 10px;
+  font-weight: 300;
+  height: 24px;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  width: calc(100% - 40px);
+}
+.input-add-task {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: none;
+  color: white;
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 300;
+  height: 48px;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  width: calc(100% - 110px);
 }
 .list-item:hover .delete-list-item {
   display: block;
 }
 .main-box {
-  background-color: #888888;
-  border: 1px;
-  border-color: white;
-  border-style: solid;
+  background-color: black;
+  color: #888888;
   margin: 30px;
+  margin-top: 58px;
   padding: 15px;
 }
 .box:hover .delete-task-item {
@@ -52,7 +139,7 @@ ul {
   background-color: blue;
 }
 .task-title {
-  color: white;
+  color: #82ffb4;
 }
 * {
   box-sizing: border-box;

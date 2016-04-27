@@ -19434,6 +19434,27 @@ module.exports = ListItem;
 
 },{"react":164,"react-dom":1}],168:[function(require,module,exports){
 var React = require('react');
+
+var Navbar = React.createClass({
+  displayName: "Navbar",
+
+  render: function () {
+    return React.createElement(
+      "header",
+      null,
+      React.createElement(
+        "a",
+        { className: "header-title", href: "#" },
+        " Task Manager "
+      )
+    );
+  }
+});
+
+module.exports = Navbar;
+
+},{"react":164}],169:[function(require,module,exports){
+var React = require('react');
 var TaskItem = require('./TaskItem.jsx');
 
 var Task = React.createClass({
@@ -19456,7 +19477,7 @@ var Task = React.createClass({
 
 module.exports = Task;
 
-},{"./TaskItem.jsx":169,"react":164}],169:[function(require,module,exports){
+},{"./TaskItem.jsx":170,"react":164}],170:[function(require,module,exports){
 var React = require('react');
 var List = require('./List.jsx');
 
@@ -19503,13 +19524,11 @@ var TaskItem = React.createClass({
         React.createElement(
           'form',
           { onSubmit: this.handleSubmit },
-          React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+          React.createElement('input', { className: 'input-add-listitem', onChange: this.onChange, value: this.state.newItemText }),
           React.createElement(
             'button',
-            null,
-            ' Add ',
-            this.props.title,
-            ' '
+            { className: 'btn-add-listitem' },
+            ' Add '
           )
         ),
         React.createElement(List, { items: this.state.items })
@@ -19522,7 +19541,7 @@ var TaskItem = React.createClass({
 
 module.exports = TaskItem;
 
-},{"./List.jsx":166,"react":164}],170:[function(require,module,exports){
+},{"./List.jsx":166,"react":164}],171:[function(require,module,exports){
 var React = require('react');
 var Task = require('./Task.jsx');
 
@@ -19537,7 +19556,6 @@ var TaskManager = React.createClass({
   },
   handleSubmit: function (e) {
     e.preventDefault();
-    console.log("TaskManager-handleSubmit: (", this.state.newTaskTitle, ")");
     if (this.state.newTaskTitle.trim()) {
       var currentTask = this.state.tasks;
       currentTask.push(this.state.newTaskTitle);
@@ -19556,11 +19574,11 @@ var TaskManager = React.createClass({
       React.createElement(
         'form',
         { onSubmit: this.handleSubmit },
-        React.createElement('input', { onChange: this.onChange, value: this.state.newTaskTitle }),
+        React.createElement('input', { className: 'input-add-task', onChange: this.onChange, value: this.state.newTaskTitle }),
         React.createElement(
           'button',
-          null,
-          ' Add a New Task '
+          { className: 'btn-add-task' },
+          ' Add New Task '
         )
       ),
       React.createElement(Task, { tasks: this.state.tasks })
@@ -19570,11 +19588,13 @@ var TaskManager = React.createClass({
 
 module.exports = TaskManager;
 
-},{"./Task.jsx":168,"react":164}],171:[function(require,module,exports){
+},{"./Task.jsx":169,"react":164}],172:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var TaskManager = require('./components/TaskManager.jsx');
+var Navbar = require('./components/Navbar.jsx');
 
+ReactDOM.render(React.createElement(Navbar, null), document.getElementById('header'));
 ReactDOM.render(React.createElement(TaskManager, { title: 'My Tasks' }), document.getElementById('app'));
 
-},{"./components/TaskManager.jsx":170,"react":164,"react-dom":1}]},{},[171]);
+},{"./components/Navbar.jsx":168,"./components/TaskManager.jsx":171,"react":164,"react-dom":1}]},{},[172]);

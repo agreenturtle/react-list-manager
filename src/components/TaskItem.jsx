@@ -28,8 +28,8 @@ var TaskItem = React.createClass({
 
             </span>
             <form onSubmit={this.handleSubmit}>
-              <input onChange={this.onChange} value={this.state.newItemText} />
-              <button> Add {this.props.title} </button>
+              <input className="input-add-listitem" onChange={this.onChange} value={this.state.newItemText} />
+              <button className="btn-add-listitem"> Add </button>
             </form>
 
             <List items={this.state.items} />
